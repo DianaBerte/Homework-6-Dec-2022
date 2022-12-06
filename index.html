@@ -40,6 +40,12 @@
           <li>1st</li>
           <li>2nd</li>
           <li>3rd</li>
+        <button onclick="addToTheSecond('This is a new item')">
+            Add an item to the list
+        </button>
+        <div id="new-li" type="li" onkeyup="handleKeyUpOnInput">
+
+        </div>
         </ul>
   
         <a href="strive.school">This link goes to Strive School</a>
@@ -97,8 +103,8 @@
         */
   
         const changePcontent = function () {
-          let newPContentNode = document.querySelector('div p');
-          if (p < div) {
+          let newPContentNode = document.querySelectorAll('div > p');
+          if ('div > p') {
             console.log("The p content has changed")
           }
         }
@@ -116,7 +122,9 @@
         */
   
         const addToTheSecond = function (content) {
-          //
+          let newItemNode = document.createElement('div');
+          newItemNode.classList.add('li');
+          newItemNode.onclick = onItemClick
         };
   
         /* EXERCISE 6
