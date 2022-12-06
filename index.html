@@ -73,11 +73,11 @@
 
       <div>
         <footer>
-          <button onclick="changeFooterText('This is the new footer!')">
+          /*<button onclick="changeFooterText('This is the new footer!')">
           Change old footer to new footer 
           </button>
           <p>This is the old footer!</p>
-        </footer>
+        </footer>*/
       </div>
 
       <script>
@@ -95,6 +95,8 @@
         */
   
         const addClassToTitle = function () {
+            let h1Node = document.getElementsByTagName('h1');
+            h1Node.classList.add('myHeading')
        /*   let addClassNode = element.classList.add('.newClass') */
         };
   
@@ -103,9 +105,9 @@
         */
   
         const changePcontent = function () {
-          let newPContentNode = document.querySelectorAll('div > p');
-          if ('div > p') {
-            console.log("The p content has changed")
+          let newPContentNode = document.querySelectorAll('div p');
+          for (let i = 0; i < newPContentNode.length; i++) {
+            newPContentNode[i].innerText = "New p content!"
           }
         }
   
@@ -114,7 +116,8 @@
         */
   
         const changeUrls = function () {
-          //
+          let newUrl = document.querySelector('a');
+          newUrl.href = "https://www.google.com"
         };
   
         /* EXERCISE 5
@@ -122,25 +125,38 @@
         */
   
         const addToTheSecond = function (content) {
-          let newItemNode = document.createElement('div');
+            let newList = document.getElementById('secondList');
+            let newLiNode = document.createElement('li');
+            
+            newLiNode.innerText = content;
+            newList.appendChild(newLiNode)
+
+          /*let newItemNode = document.createElement('div');
           newItemNode.classList.add('li');
-          newItemNode.onclick = onItemClick
+          newItemNode.onclick = onItemClick*/
         };
-  
+
+        
         /* EXERCISE 6
          Write a function for adding a second paragraph to the first div.
         */
   
         const addParagraph = function (content) {
-          //
-        };
-  
+            let div = document.getElementsByTagName('div')[0];
+            let newP = document.createElement('p');
+
+            newP.innerText = content;
+            div.appendChild(newP);
+        }
+     
+          
         /* EXERCISE 7
          Write a function for making the first unordered list disappear.
         */
   
         const firstUlDisappear = function () {
-          //
+          let firstUl = document.getElementById('firstList');
+          firstUl.style.visibility = "hidden"
         };
   
         /* EXERCISE 8
@@ -157,17 +173,30 @@
         */
   
         const makeItClickable = function () {
-          //
+            let header = document.getElementsByTagName("h1")[0];
+            header.addEventListener("click", function(event){
+                event.target.classList.toggle("myHeading");
+            })
+                     
         };
+
+        makeItClickable();
   
         /* EXERCISE 10
          Change the footer text with something else when the user clicks on it.
         */
   
-        const changeFooterText = function (newFooter) {
-          let footerNode = document.querySelector('footer');
-          footerNode.innerText = newFooter
-        };
+       // const changeFooterText = function (newFooter) {
+       //   let footerNode = document.querySelector('footer');
+        //  footerNode.innerText = newFooter
+       // };
+
+       function changeFooterText() {
+        let FooterText = document.querySelector('footer')
+        FooterText.onclick = function(event) {
+            event.target.innerText = "test test test test"            
+        }
+       }
   
         /* EXERCISE 11
          Attach an event listener to the input field in the page for console logging its value just after any keystroke.
@@ -180,9 +209,9 @@
          Create a welcome alert message when the page successfully loads.
         */
   
-        /* window.onload = function onLoadActions() {
+        /*window.onload = function onLoadActions() {
           alert("Welcome!")
-        };*/
+        };
   
         /* EXERCISE 13
          Use HTML5 tags to properly provide semantic meaning to the different portions of the page.
